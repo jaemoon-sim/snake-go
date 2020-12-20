@@ -26,21 +26,6 @@ func (c *Coord) Draw(board *ebiten.Image) {
 	coordImage.Fill(color.RGBA{0x88, 0x00, 0x88, 0xff})
 
 	op := &ebiten.DrawImageOptions{}
-	// bw, bh := board.Size()
-	//
-	// if c.X*tileSize > bw-tileSize {
-	// c.X = 0
-	// }
-	// if c.X*tileSize < 0 {
-	// c.X = bw / tileSize
-	// }
-	// if c.Y*tileSize > bh-tileSize {
-	// c.Y = 0
-	// }
-	// if c.Y*tileSize < 0 {
-	// c.Y = bh / tileSize
-	// }
-	//
 	x := c.X * tileSize
 	y := c.Y * tileSize
 
@@ -221,12 +206,6 @@ func (g *Game) Update() error {
 		DeadChan <- true
 	}
 
-	// select {
-	// case <-DeadChan:
-	// g.Snake = createSnake()
-	// default:
-	// fmt.Println("keep going")
-	// }
 	return nil
 }
 
@@ -235,19 +214,6 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	// Write your game's rendering.
 	screen.Fill(color.RGBA{0x77, 0x77, 0x77, 0xff})
-	// if g.boardImage == nil {
-	// w, h := 480, 480
-	// g.boardImage = ebiten.NewImage(w, h)
-	// g.boardImage.Fill(color.RGBA{0xff, 0x00, 0x00, 0xff})
-	// }
-	//
-	// op := &ebiten.DrawImageOptions{}
-	// sw, sh := screen.Size()
-	// bw, bh := g.boardImage.Size()
-	// x := (sw - bw) / 2
-	// y := (sh - bh) / 2
-	// op.GeoM.Translate(float64(x), float64(y))
-	// screen.DrawImage(g.boardImage, op)
 	if g.Snake != nil {
 		g.Snake.Draw(screen)
 	}
